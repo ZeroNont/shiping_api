@@ -21,10 +21,13 @@ $router->get('foo', function () {
    return 'Hello World';
 });
 $router->get('show_data', 'Controller@show_data');
-$router->get('get_data_by_year', 'Controller@get_data_by_year');
+$router->get('get_data_by_year/{id}', 'Controller@get_data_by_year');
 $router->get('get_data_by_type', 'Controller@get_data_by_type');
-$router->get('get_data_by_status', 'Controller@get_data_by_status');
-$router->get('get_data_all_courier', 'Controller@get_data_all_courier');
+$router->get('get_data_by_status/{id}', 'Controller@get_data_by_status');
+$router->get('get_data_all_courier/{id}', 'Controller@get_data_all_courier');
+$router->get('showCourier/{id}', 'Controller@get_data_courier');
 $router->get('get_data_all_payment', 'Controller@get_data_all_payment');
 $router->get('get_data_by_drop_code', 'Controller@get_data_by_drop_code');
-$router->get('show_data_by_month', 'Controller@show_data_by_month');
+$router->get('show_data_by_month/{id}', 'Controller@show_data_by_month');
+$router->get('show_data_year', 'Controller@get_year');
+$router->get('showDataByCourire/{id}', 'Controller@get_data_courier_by_name');

@@ -140,7 +140,7 @@ class Controller extends BaseController
     public function get_data_courier_by_name($id)
     {
         $res = new Response(__METHOD__);
-        $data['courier'] = DB::select("SELECT courier_code AS 'name',COUNT(courier_code) AS amount,sum(freight_fee) AS sum,sum(freight_fee-other_fee) AS margin,sum(freight_fee) * 100/sum(freight_fee-other_fee) as 'Percentage of Total' FROM parcels WHERE year(created_at)=:years AND courier_code = :courier GROUP BY courier_code" , ['years' => $id,'courier'=>$this->req->input('courier_code')]);
+        $data['courier'] = DB::select("SELECT courier_code AS 'name',COUNT(courier_code) AS amount,sum(freight_fee) AS sum,sum(freight_fee-other_fee) AS margin,sum(freight_fee) * 100/sum(freight_fee-other_fee) as 'Percent' FROM parcels WHERE year(created_at)=:years AND courier_code = :courier GROUP BY courier_code" , ['years' => $id,'courier'=>$this->req->input('courier_code')]);
         $res->set('OK', $data);
         $response = $res->get();
         return response()->json($response['content'], $response['status']);
